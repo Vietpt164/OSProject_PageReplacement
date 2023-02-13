@@ -1,0 +1,65 @@
+package algorithms;
+
+import java.util.*;
+
+import javafx.scene.layout.Pane;
+
+public class FIFO {
+	private int[] pageReferences;
+	private int frameSize;
+	private static Pane pane;
+	private int PRLength;
+	private Queue<Integer> PageFrame;
+	
+	
+	
+	
+
+	public FIFO(int[] pageReferences, int frameSize, Pane pane) {
+		super();
+		this.pageReferences = pageReferences;
+		this.frameSize = frameSize;
+		this.PRLength = pageReferences.length;
+		PageFrame = new LinkedList<>();
+		for (int i = 0; i < frameSize; i++) {
+			PageFrame.add(-1);
+		}
+
+	}
+
+	void pageFaults() {
+		
+		int pageFaults = 0;
+		
+		for (int i = 0; i < PRLength; i++) {
+			int hit = 1;
+			if (PageFrame.size() < frameSize) {
+    		   if (!PageFrame.contains(pageReferences[i])) {
+    			   PageFrame.add(pageReferences[i]);
+    			   pageFaults++; hit = 0;
+    		   }
+    	   }
+    	   else {
+    		  if (!PageFrame.contains(pageReferences[i])) {
+    			   int val = PageFrame.peek();
+    			   PageFrame.poll();
+    			   PageFrame.add(pageReferences[i]);
+    			   pageFaults++; hit = 0;
+    		  }
+    	   }
+    	   System.out.print(PageFrame);
+    	   System.out.println(hit == 1 ? "\tHit" : "\tMiss");
+		}
+
+		System.out.println("Total page faults: " + pageFaults);
+    }
+
+	public static void main(String args[])
+	{
+		int pages[] = {0,1,2,3,0,1,4,0,1,2,3,4};
+        int capacity = 3;
+        FIFO test1 = new FIFO(pages, capacity, null);
+        test1.pageFaults();
+	}
+}
+

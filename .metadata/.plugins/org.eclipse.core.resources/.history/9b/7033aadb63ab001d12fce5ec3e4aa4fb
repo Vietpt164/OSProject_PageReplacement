@@ -1,0 +1,54 @@
+package algorithms;
+
+import java.util.*;
+
+import javafx.scene.layout.Pane;
+
+public class FIFO {
+	private int[] pageReferences;
+	private int pageFrames;
+	private static Pane pane;
+	
+	
+	
+	
+
+	public FIFO(int[] pageReferences, int pageFrames, Pane pane) {
+		super();
+		this.pageReferences = pageReferences;
+		this.pageFrames = pageFrames;
+	}
+
+	static void pageFaults(int pages[], int n, int capacity) {
+		Queue<Integer> indexes = new LinkedList<>();
+
+		int pageFaults = 0;
+		for (int i = 0; i < n; i++) {
+    	   if (indexes.size() < capacity) {
+    		   if (!indexes.contains(pages[i])) {
+    			   indexes.add(pages[i]);
+    			   pageFaults++;
+    		   }
+    	   }
+    	   else {
+    		  if (!indexes.contains(pages[i])) {
+    			   int val = indexes.peek();
+    			   indexes.poll();
+    			   indexes.add(pages[i]);
+    			   pageFaults++;
+    		  }
+    	   }
+		}
+
+		System.out.println(pageFaults);
+    }
+
+	public static void main(String args[])
+	{
+		int pages[] = {7, 0, 1, 2, 1, 3, 0, 4, 2, 3, 0, 3, 2, 4, 6, 4};
+		int n = pages.length;
+        int capacity = 4;
+        pageFaults(pages, n, capacity);
+	}
+}
+

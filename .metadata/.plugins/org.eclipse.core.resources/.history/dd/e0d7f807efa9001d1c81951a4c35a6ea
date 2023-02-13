@@ -1,0 +1,3 @@
+module PageReplacement {
+	requires javafx.controls;
+}
