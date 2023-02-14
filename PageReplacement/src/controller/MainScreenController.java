@@ -6,6 +6,8 @@ import java.util.Random;
 import java.util.ResourceBundle;
 
 import algorithms.FIFO;
+import algorithms.LRU;
+import algorithms.PRAlgorithm;
 import javafx.animation.PathTransition;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -39,7 +41,7 @@ import javafx.scene.Scene;
 public class MainScreenController implements Initializable{
 	
 	public static String sort;
-	FIFO fifo;
+	PRAlgorithm algo;
 	Stage stage;
 	private String currentAlgo;
 	private String[] algoList = {"First In First Out (FIFO)","Least Recently Used (LRU)","Optimal Page Replacement"};
@@ -106,8 +108,23 @@ public class MainScreenController implements Initializable{
     		for (int i = 0; i < PRArray.length; i++) {
     			pageReferences[i] = Integer.parseInt(PRArray[i].trim());
     		}
-    		fifo = new FIFO(pageReferences, frameSize, mainPane);
-    		int pageFault = fifo.pageFaults();
+    		
+    		if (currentAlgo.equals("First In First Out (FIFO)")) {
+    			algo = new FIFO(pageReferences, frameSize, mainPane);
+    		}
+    		else if (currentAlgo.equals("Least Recently Used (LRU)")) {
+    			algo = new LRU(pageReferences, frameSize, mainPane);
+    		}
+    		else if (currentAlgo.equals("Optimal Page Replacement")) {
+    			//algo = new OPR(pageReferences, frameSize, mainPane);
+    		}
+    		else {
+    			throw new Exception("Please choose an algorithm to begin");
+    		}
+    		
+    		
+    		
+    		int pageFault = algo.pageFaults();
     		pageFaultArea.setText("Total Page Faults = " + pageFault);
     		
 			

@@ -1,4 +1,13 @@
-INDEX VERSION 1.131+E:\Study materials\20221\Operating System\OSProject_PageReplacement\.metadata\.plugins\org.eclipse.jdt.core
+INDEX VERSION 1.131+E:\OSProject_PageReplacement\.metadata\.plugins\org.eclipse.jdt.core
+1599668932.index
 1714739195.index
-2435037786.index
+192026650.index
+496620729.index
+1063146654.index
+3188460068.index
 1865797976.index
+4086194416.index
+2392162364.index
+1441489534.index
+1518365597.index
+2435037786.index
