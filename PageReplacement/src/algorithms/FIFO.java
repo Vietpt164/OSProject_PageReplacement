@@ -7,17 +7,11 @@ import javafx.scene.control.TextArea;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 
-public class FIFO {
-	private int[] pageReferences;
-	private int frameSize;
-	public static Pane pane;
-	private int PRLength;
+public class FIFO extends PRAlgorithm {
+	
 	private Queue<Integer> pageFrame;
-	private Color[] initColor = {Color.LIGHTBLUE, Color.BLACK };
 	
 	
-	
-
 	public FIFO(int[] pageReferences, int frameSize, Pane inputPane) {
 		super();
 		this.pageReferences = pageReferences;
@@ -67,17 +61,7 @@ public class FIFO {
 			return pageFaults;
     }
 	
-	private void drawPageFrames(Queue<Integer> pageFrame , Color[] c, double startX, double startY) {
-		int i = 0; 
-		
-		for (Integer item: pageFrame) {
-            Square s;
-			s = new Square(item, startX, startY + i * 60, c[0], c[1]);
-			pane.getChildren().add(s);
-			i++;
-        }
-		
-	}
+	
 	
 	/*public static void main(String args[])
 	{
