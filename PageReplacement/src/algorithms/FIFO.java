@@ -13,14 +13,8 @@ public class FIFO extends PRAlgorithm {
 	
 	
 	public FIFO(int[] pageReferences, int frameSize, Pane inputPane) {
-		super();
-		this.pageReferences = pageReferences;
-		this.frameSize = frameSize;
-		this.PRLength = pageReferences.length;
-		pane = inputPane;
+		super(pageReferences, frameSize, inputPane);
 		pageFrame = new LinkedList<>();
-
-
 	}
 
 	public int pageFaults() {
@@ -42,16 +36,9 @@ public class FIFO extends PRAlgorithm {
 					pageFaults++; hit = 0;
 				}
 			}
-    	   
-			Square PR;
-			PR = new Square(Integer.toString(pageReferences[i]), 60 + 100*i, 5);
-			pane.getChildren().add(PR);
-			
-			drawPageFrames(pageFrame, initColor, 60 + 100*i, 65);
-			
-			Square Label;
-			Label = new Square(hit == 1 ? "Hit" : "Miss", 60 + 100*i, 70 + frameSize*60);
-			pane.getChildren().add(Label);
+  
+			//Draw current step
+			drawStep(pageFrame, hit, i, initColor, 60 + 100*i, 65);
 			
 		}
 			
