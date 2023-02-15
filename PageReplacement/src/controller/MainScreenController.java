@@ -52,6 +52,9 @@ public class MainScreenController implements Initializable{
 	private int frameSize;
 	
 	
+    @FXML
+    private Button resetButton;
+    
 	@FXML
     private TextArea pageFaultArea;
 	
@@ -96,6 +99,16 @@ public class MainScreenController implements Initializable{
     void helpButtonPressed(ActionEvent event) {
     	new HelpController();
     }
+    
+    @FXML
+    void resetButtonPressed(ActionEvent event) {
+    	mainPane.getChildren().clear();
+    	Label PFLabel = new Label("Page Frames");
+    	PFLabel.setLayoutX(-30); PFLabel.setLayoutY(150); 
+    	PFLabel.setRotate(90);
+    	PFLabel.setFont(Font.font("verdana", FontPosture.REGULAR, 20));
+    	mainPane.getChildren().add(PFLabel);
+    }
 
 
     @FXML
@@ -108,12 +121,22 @@ public class MainScreenController implements Initializable{
     	PFLabel.setFont(Font.font("verdana", FontPosture.REGULAR, 20));
     	mainPane.getChildren().add(PFLabel);
     	
-    	currentAlgo = algoChoiceBox.getValue();
-    	frameSize = Integer.parseInt(noFramesField.getText()); 
-    	String strPR = pageReferencesField.getText().trim();
-    	String[] PRArray = strPR.split(",");
     	
     	try {
+    		currentAlgo = algoChoiceBox.getValue();
+
+	    	frameSize = Integer.parseInt(noFramesField.getText().trim());
+	    	if (frameSize > 5) {
+	    		throw new Exception("Number of frames must be less than or equals 5");
+	    	}
+	    	
+	    	String strPR = pageReferencesField.getText().trim();
+	    	String[] PRArray = strPR.split(",");
+	    	if (PRArray.length > 13) {
+	    		throw new Exception("The length of page reference string is too long to display");
+	    	}
+	    	
+	    	
     		pageReferences = new int[PRArray.length];
     		for (int i = 0; i < PRArray.length; i++) {
     			pageReferences[i] = Integer.parseInt(PRArray[i].trim());
@@ -127,9 +150,6 @@ public class MainScreenController implements Initializable{
     		}
     		else if (currentAlgo.equals("Optimal Page Replacement")) {
     			algo = new OPR(pageReferences, frameSize, mainPane);
-    		}
-    		else {
-    			throw new Exception("Please choose an algorithm to begin");
     		}
     		
     		
@@ -155,6 +175,7 @@ public class MainScreenController implements Initializable{
 		
 		algoChoiceBox.getItems().addAll(algoList);
 		algoChoiceBox.setOnAction(this::getAlgo);
+		algoChoiceBox.setValue("First In First Out (FIFO)");
 		Label PFLabel = new Label("Page Frames");
     	PFLabel.setLayoutX(-30); PFLabel.setLayoutY(150); 
     	PFLabel.setRotate(90);
