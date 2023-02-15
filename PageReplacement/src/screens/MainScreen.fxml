@@ -15,17 +15,17 @@
 
 <BorderPane fx:id="myborderpane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1400.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
    <top>
-      <ToolBar prefHeight="50.0" BorderPane.alignment="CENTER">
+      <ToolBar prefHeight="50.0" style="-fx-background-color: mintcream;" BorderPane.alignment="CENTER">
         <items>
-            <Button fx:id="helpButton" layoutX="10.0" layoutY="12.0" mnemonicParsing="false" onAction="#helpButtonPressed" prefHeight="34.0" prefWidth="60.0" text="Help">
+            <Button fx:id="helpButton" layoutX="10.0" layoutY="12.0" mnemonicParsing="false" onAction="#helpButtonPressed" prefHeight="40.0" prefWidth="69.0" style="-fx-background-color: lightblue;" text="HELP" textAlignment="CENTER">
                <font>
-                  <Font size="16.0" />
+                  <Font size="18.0" />
                </font>
             </Button>
-            <Region prefHeight="42.0" prefWidth="1249.0" />
-            <Button fx:id="exitButton" layoutX="74.0" layoutY="12.0" mnemonicParsing="false" onAction="#exitButtonPressed" prefHeight="37.0" prefWidth="64.0" text="Exit">
+            <Region prefHeight="42.0" prefWidth="1240.0" />
+            <Button fx:id="exitButton" layoutX="74.0" layoutY="12.0" mnemonicParsing="false" onAction="#exitButtonPressed" prefHeight="37.0" prefWidth="64.0" style="-fx-background-color: lightblue;" text="EXIT">
                <font>
-                  <Font size="16.0" />
+                  <Font size="18.0" />
                </font>
             </Button>
         </items>
@@ -39,7 +39,7 @@
          <top>
             <AnchorPane prefHeight="150.0" prefWidth="1200.0" style="-fx-border-color: grey; -fx-background-color: white;" BorderPane.alignment="CENTER">
                <children>
-                  <ChoiceBox fx:id="algoChoiceBox" layoutX="57.0" layoutY="69.0" prefHeight="43.0" prefWidth="262.0" />
+                  <ChoiceBox fx:id="algoChoiceBox" layoutX="57.0" layoutY="69.0" prefHeight="43.0" prefWidth="262.0" style="-fx-background-color: lightblue;" />
                   <Label layoutX="100.0" layoutY="8.0" prefHeight="51.0" prefWidth="196.0" text="Choose an algorithm">
                      <font>
                         <Font size="20.0" />
@@ -55,15 +55,20 @@
                         <Font size="20.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="noFramesField" layoutX="460.0" layoutY="67.0" prefHeight="51.0" prefWidth="142.0">
+                  <TextField fx:id="noFramesField" layoutX="460.0" layoutY="67.0" prefHeight="51.0" prefWidth="142.0" style="-fx-background-color: lightblue;">
                      <font>
                         <Font size="20.0" />
                      </font></TextField>
-                  <TextField fx:id="pageReferencesField" layoutX="765.0" layoutY="66.0" prefHeight="51.0" prefWidth="397.0">
+                  <TextField fx:id="pageReferencesField" layoutX="765.0" layoutY="66.0" prefHeight="51.0" prefWidth="397.0" style="-fx-background-color: lightblue;">
                      <font>
                         <Font size="20.0" />
                      </font></TextField>
-                  <Button fx:id="startButton" layoutX="1245.0" layoutY="48.0" mnemonicParsing="false" onAction="#startButtonPressed" prefHeight="56.0" prefWidth="125.0" style="-fx-background-color: lightblue;" text="START">
+                  <Button fx:id="startButton" layoutX="1234.0" layoutY="81.0" mnemonicParsing="false" onAction="#startButtonPressed" prefHeight="56.0" prefWidth="125.0" style="-fx-background-color: lightblue;" text="START" textFill="#1b1717">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="resetButton" layoutX="1233.0" layoutY="11.0" mnemonicParsing="false" onAction="#resetButtonPressed" prefHeight="56.0" prefWidth="125.0" style="-fx-background-color: lightblue;" text="RESET" textFill="#1e0404">
                      <font>
                         <Font size="20.0" />
                      </font>
@@ -72,7 +77,7 @@
             </AnchorPane>
          </top>
          <bottom>
-            <Pane prefHeight="86.0" prefWidth="1400.0" BorderPane.alignment="CENTER">
+            <Pane prefHeight="86.0" prefWidth="1400.0" style="-fx-background-color: mintcream;" BorderPane.alignment="CENTER">
                <children>
                   <TextArea fx:id="pageFaultArea" layoutX="447.0" layoutY="3.0" prefHeight="81.0" prefWidth="520.0" style="-fx-background-color: white; -fx-border-color: Black; -fx-border-width: 1.5;" text="Total Page Faults =">
                      <font>
