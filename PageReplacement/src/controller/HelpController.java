@@ -22,7 +22,7 @@ public class HelpController   {
 		    pane.setCenter(scrollPane);
 			Scene scene = new Scene(pane, 500, 500);
 			Scanner input = new Scanner(new File(
-					"E:\\Study materials\\20221\\Operating System\\PageReplacement\\PageReplacement\\src\\controller\\Help.txt"));
+					"E:\\OSProject_PageReplacement\\PageReplacement\\src\\controller\\Help.txt"));
 
 			while (input.hasNext()) {
 	               ta.appendText(input.nextLine() + '\n');

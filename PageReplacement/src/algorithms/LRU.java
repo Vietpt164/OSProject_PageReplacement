@@ -1,6 +1,8 @@
 package algorithms;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Queue;
 
 import elements.Square;
@@ -17,9 +19,6 @@ public class LRU extends PRAlgorithm {
 		this.PRLength = pageReferences.length;
 		pane = inputPane;
 		pageFrame = new LinkedList<>();
-		for (int i = 0; i < frameSize; i++) {
-			pageFrame.add(-1);
-		}
 
 	}
 
