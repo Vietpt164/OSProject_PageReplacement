@@ -12,11 +12,7 @@ public class OPR extends PRAlgorithm {
 	private int[] pageFrame;
 
 	public OPR(int[] pageReferences, int frameSize, Pane inputPane) {
-		super();
-		this.pageReferences = pageReferences;
-		this.frameSize = frameSize;
-		this.PRLength = pageReferences.length;
-		pane = inputPane;
+		super(pageReferences, frameSize, inputPane);
 		pageFrame = new int[frameSize];
 		for (int i = 0; i < frameSize; i++) {
 			pageFrame[i] = -1;
@@ -73,15 +69,10 @@ public class OPR extends PRAlgorithm {
             // Page found in a frame : HIT
             if (search(pageReferences[i])) {
                 hit++; hitID = 1;
-                Square PR;
-    			PR = new Square(Integer.toString(pageReferences[i]), 60 + 100*i, 5);
-    			pane.getChildren().add(PR);
     			
-    			drawPageFrames(pageFrame, frameSize, initColor, 60 + 100*i, 65);
+                //Draw step
+    			drawPageFrames(pageFrame, hitID, i, frameSize, initColor, 60 + 100*i, 65);
     			
-    			Square Label;
-    			Label = new Square(hitID == 0 ? "Miss" : "Hit", 60 + 100*i, 70 + frameSize*60);
-    			pane.getChildren().add(Label);
                 continue;
             }
  
@@ -97,16 +88,9 @@ public class OPR extends PRAlgorithm {
                 pageFrame[j] = pageReferences[i];
             }
 	    			
-	        Square PR;
-			PR = new Square(Integer.toString(pageReferences[i]), 60 + 100*i, 5);
-			pane.getChildren().add(PR);
-			
-			drawPageFrames(pageFrame, frameSize, initColor, 60 + 100*i, 65);
-			
-			Square Label;
-			Label = new Square(hitID == 0 ? "Miss" : "Hit", 60 + 100*i, 70 + frameSize*60);
-			pane.getChildren().add(Label);
-            
+			//Draw step
+			drawPageFrames(pageFrame, hitID, i, frameSize, initColor, 60 + 100*i, 65);
+		
         }
         
         return PRLength - hit;
@@ -115,17 +99,27 @@ public class OPR extends PRAlgorithm {
 	
 	 
 	
-	public void drawPageFrames(int[] frame, int frameSize, Color[] c, double startX, double startY) {
+	public void drawPageFrames(int[] frame, int hitID, int i, int frameSize, Color[] c, double startX, double startY) {
 		
-		int i = 0; 
+		//Draw page reference
+		Square PR;
+		PR = new Square(Integer.toString(pageReferences[i]), 60 + 100*i, 5);
+		pane.getChildren().add(PR);
 		
+		//Draw page frames
+		int index = 0; 
 		for (Integer item: frame) {
             Square s;
-			s = new Square(item, startX, startY + i * 60, c[0], c[1]);
+			s = new Square(item, startX, startY + index * 60, c[0], c[1]);
 			pane.getChildren().add(s);
-			i++;
+			index++;
         }
 		
+		//Draw hit/miss
+		Square Label;
+		Label = new Square(hitID == 1 ? "Hit" : "Miss", 60 + 100*i, 70 + frameSize*60);
+		pane.getChildren().add(Label);
+
 	}
 	 
 	   

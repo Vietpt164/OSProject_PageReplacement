@@ -84,7 +84,7 @@ public class MainScreenController implements Initializable{
     void exitButtonPressed(ActionEvent event) {
     	Alert alert = new Alert(AlertType.CONFIRMATION);
 		alert.setTitle("Logout");
-		alert.setHeaderText("You're about to logout!");
+		alert.setHeaderText("You're about to exit!");
 		alert.setContentText("See you next time  !!!");
 		
 		if(alert.showAndWait().get() == ButtonType.OK){
