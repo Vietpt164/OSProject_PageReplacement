@@ -1,5 +1,6 @@
 package algorithms;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Queue;
 
@@ -12,13 +13,19 @@ public abstract class PRAlgorithm {
 	protected int frameSize;
 	public static Pane pane;
 	protected int PRLength;
-	//protected List<Integer> pageFrame;
 	protected Color[] initColor = {Color.LIGHTBLUE, Color.BLACK };
 	
-	public void drawPageFrames(Queue<Integer> pageFrame , Color[] c, double startX, double startY) {
-		int i = 0; 
+	
+	
+	public void drawPageFrames(Queue<Integer> pageFrame, Color[] c, double startX, double startY) {
 		
-		for (Integer item: pageFrame) {
+		List<Integer> frame = new ArrayList<Integer>(pageFrame);
+		int i = 0; 
+		while (frame.size() < frameSize) {
+			frame.add(-1);
+		}
+		
+		for (Integer item: frame) {
             Square s;
 			s = new Square(item, startX, startY + i * 60, c[0], c[1]);
 			pane.getChildren().add(s);

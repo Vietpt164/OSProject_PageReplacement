@@ -19,9 +19,7 @@ public class FIFO extends PRAlgorithm {
 		this.PRLength = pageReferences.length;
 		pane = inputPane;
 		pageFrame = new LinkedList<>();
-		for (int i = 0; i < frameSize; i++) {
-			pageFrame.add(-1);
-		}
+
 
 	}
 
@@ -39,7 +37,6 @@ public class FIFO extends PRAlgorithm {
 			}
 			else {
 				if (!pageFrame.contains(pageReferences[i])) {
-					int val = pageFrame.peek();
 					pageFrame.poll();
 					pageFrame.add(pageReferences[i]);
 					pageFaults++; hit = 0;

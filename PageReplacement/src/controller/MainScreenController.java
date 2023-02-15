@@ -7,6 +7,7 @@ import java.util.ResourceBundle;
 
 import algorithms.FIFO;
 import algorithms.LRU;
+import algorithms.OPR;
 import algorithms.PRAlgorithm;
 import javafx.animation.PathTransition;
 import javafx.event.ActionEvent;
@@ -32,6 +33,8 @@ import javafx.scene.shape.Circle;
 import javafx.scene.shape.LineTo;
 import javafx.scene.shape.MoveTo;
 import javafx.scene.shape.Path;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontPosture;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import javafx.scene.Node;
@@ -98,6 +101,13 @@ public class MainScreenController implements Initializable{
     @FXML
     void startButtonPressed(ActionEvent event) {
     	mainPane.getChildren().clear();
+    	
+    	Label PFLabel = new Label("Page Frames");
+    	PFLabel.setLayoutX(-30); PFLabel.setLayoutY(150); 
+    	PFLabel.setRotate(90);
+    	PFLabel.setFont(Font.font("verdana", FontPosture.REGULAR, 20));
+    	mainPane.getChildren().add(PFLabel);
+    	
     	currentAlgo = algoChoiceBox.getValue();
     	frameSize = Integer.parseInt(noFramesField.getText()); 
     	String strPR = pageReferencesField.getText().trim();
@@ -116,7 +126,7 @@ public class MainScreenController implements Initializable{
     			algo = new LRU(pageReferences, frameSize, mainPane);
     		}
     		else if (currentAlgo.equals("Optimal Page Replacement")) {
-    			//algo = new OPR(pageReferences, frameSize, mainPane);
+    			algo = new OPR(pageReferences, frameSize, mainPane);
     		}
     		else {
     			throw new Exception("Please choose an algorithm to begin");
@@ -145,6 +155,11 @@ public class MainScreenController implements Initializable{
 		
 		algoChoiceBox.getItems().addAll(algoList);
 		algoChoiceBox.setOnAction(this::getAlgo);
+		Label PFLabel = new Label("Page Frames");
+    	PFLabel.setLayoutX(-30); PFLabel.setLayoutY(150); 
+    	PFLabel.setRotate(90);
+    	PFLabel.setFont(Font.font("verdana", FontPosture.REGULAR, 20));
+    	mainPane.getChildren().add(PFLabel);
 		
 	}
 	

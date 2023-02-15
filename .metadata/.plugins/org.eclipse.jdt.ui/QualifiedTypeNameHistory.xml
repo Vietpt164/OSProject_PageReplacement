@@ -5,4 +5,6 @@
     <fullyQualifiedTypeName name="javafx.scene.layout.Pane"/>
     <fullyQualifiedTypeName name="algorithms.FIFO"/>
     <fullyQualifiedTypeName name="javafx.scene.control.TextArea"/>
+    <fullyQualifiedTypeName name="algorithms.OPR"/>
+    <fullyQualifiedTypeName name="java.util.ArrayList"/>
 </qualifiedTypeNameHistroy>
